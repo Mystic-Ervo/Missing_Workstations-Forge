@@ -1,6 +1,10 @@
 package net.ervo.missingworkstations;
 
 import com.mojang.logging.LogUtils;
+import net.ervo.missingworkstations.block.ModBlocks;
+import net.ervo.missingworkstations.item.ModCreativeModTabs;
+import net.ervo.missingworkstations.item.ModItems;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -25,6 +29,11 @@ public class MissingWorkstations {
 	public MissingWorkstations(FMLJavaModLoadingContext context) {
 		IEventBus modEventBus = context.getModEventBus();
 
+		ModCreativeModTabs.register(modEventBus);
+
+		ModItems.register(modEventBus);
+		ModBlocks.register(modEventBus);
+
 		// Register the commonSetup method for modloading
 		modEventBus.addListener(this::commonSetup);
 
@@ -44,7 +53,9 @@ public class MissingWorkstations {
 
 	// Add the example block item to the building blocks tab
 	private void addCreative(BuildCreativeModeTabContentsEvent event) {
-
+		if(event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
+			event.accept(ModBlocks.KILN);
+		}
 	}
 
 	// You can use SubscribeEvent and let the Event Bus discover methods to call
