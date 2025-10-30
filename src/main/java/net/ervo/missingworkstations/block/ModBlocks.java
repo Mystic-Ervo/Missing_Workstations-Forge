@@ -20,7 +20,7 @@ public class ModBlocks {
 			DeferredRegister.create(ForgeRegistries.BLOCKS, MissingWorkstations.MOD_ID);
 
 	public static final RegistryObject<Block> KILN = registerBlock("kiln",
-			() -> new KilnBlock(BlockBehaviour.Properties.copy(Blocks.FURNACE)));
+			() -> new KilnBlock(BlockBehaviour.Properties.copy(Blocks.STONE)));
 
 
 

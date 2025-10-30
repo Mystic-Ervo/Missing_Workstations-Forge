@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable_with_bottom",
+  "textures": {
+    "bottom": "missingworkstations:block/kiln_bottom",
+    "front": "missingworkstations:block/kiln_front_on",
+    "side": "missingworkstations:block/kiln_side",
+    "top": "missingworkstations:block/kiln_top"
+  }
+}

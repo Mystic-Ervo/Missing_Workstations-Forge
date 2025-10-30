@@ -2,8 +2,13 @@ package net.ervo.missingworkstations;
 
 import com.mojang.logging.LogUtils;
 import net.ervo.missingworkstations.block.ModBlocks;
+import net.ervo.missingworkstations.block.entity.ModBlockEntities;
 import net.ervo.missingworkstations.item.ModCreativeModTabs;
 import net.ervo.missingworkstations.item.ModItems;
+import net.ervo.missingworkstations.recipe.ModRecipes;
+import net.ervo.missingworkstations.screen.KilnScreen;
+import net.ervo.missingworkstations.screen.ModMenuTypes;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -34,6 +39,12 @@ public class MissingWorkstations {
 		ModItems.register(modEventBus);
 		ModBlocks.register(modEventBus);
 
+
+		ModBlockEntities.register(modEventBus);
+		ModMenuTypes.register(modEventBus);
+
+		ModRecipes.register(modEventBus);
+
 		// Register the commonSetup method for modloading
 		modEventBus.addListener(this::commonSetup);
 
@@ -42,9 +53,6 @@ public class MissingWorkstations {
 
 		// Register the item to a creative tab
 		modEventBus.addListener(this::addCreative);
-
-		// Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
-		context.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
 	}
 
 	private void commonSetup(final FMLCommonSetupEvent event) {
@@ -53,9 +61,11 @@ public class MissingWorkstations {
 
 	// Add the example block item to the building blocks tab
 	private void addCreative(BuildCreativeModeTabContentsEvent event) {
+		/*
 		if(event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
 			event.accept(ModBlocks.KILN);
 		}
+		*/
 	}
 
 	// You can use SubscribeEvent and let the Event Bus discover methods to call
@@ -69,7 +79,7 @@ public class MissingWorkstations {
 	public static class ClientModEvents {
 		@SubscribeEvent
 		public static void onClientSetup(FMLClientSetupEvent event) {
-
+			MenuScreens.register(ModMenuTypes.KILN_MENU.get(), KilnScreen::new);
 		}
 	}
 }

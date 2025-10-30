@@ -1,21 +1,21 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "blocks",
-  "pattern": [
-    "###",
-    "#F#",
-    "# #"
-  ],
+  "category": "building",
   "key": {
-    "#": {
+    "B": {
       "item": "minecraft:brick"
     },
     "F": {
       "item": "minecraft:furnace"
     }
   },
+  "pattern": [
+    "BBB",
+    "BFB",
+    "B B"
+  ],
   "result": {
-    "item": "missingworkstations:kiln",
-    "count": 1
-  }
+    "item": "missingworkstations:kiln"
+  },
+  "show_notification": true
 }
