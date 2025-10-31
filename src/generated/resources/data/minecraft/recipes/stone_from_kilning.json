@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:kilning",
+  "type": "missingworkstations:kilning",
   "category": "blocks",
   "cookingtime": 100,
   "experience": 0.1,

@@ -12,7 +12,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class KilnScreen extends AbstractFurnaceScreen<KilnMenu> {
 
-	private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(MissingWorkstations.MOD_ID, "textures/gui/container/kiln.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(MissingWorkstations.MOD_ID, "textures/gui/container/kiln.png");
 
 	public KilnScreen(KilnMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
 		super(pMenu, new KilningRecipeBookComponent(), pPlayerInventory, pTitle, TEXTURE);

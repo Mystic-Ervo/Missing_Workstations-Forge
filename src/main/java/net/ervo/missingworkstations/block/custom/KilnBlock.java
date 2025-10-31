@@ -15,7 +15,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 
 public class KilnBlock extends AbstractFurnaceBlock {
 
@@ -23,27 +23,25 @@ public class KilnBlock extends AbstractFurnaceBlock {
 		super(pProperties);
 	}
 
-	@Nullable
 	@Override
-	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level pLevel, BlockState pState, BlockEntityType<T> pBlockEntityType) {
+	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(@NotNull Level pLevel, @NotNull BlockState pState, @NotNull BlockEntityType<T> pBlockEntityType) {
 		return createFurnaceTicker(pLevel, pBlockEntityType, ModBlockEntities.KILN_BE.get());
 	}
 
-	@Nullable
 	@Override
-	public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
+	public BlockEntity newBlockEntity(@NotNull BlockPos pPos, @NotNull BlockState pState) {
 		return new KilnBlockEntity(pPos, pState);
 	}
 
 	@Override
-	protected void openContainer(Level pLevel, BlockPos pPos, Player pPlayer) {
+	protected void openContainer(Level pLevel, @NotNull BlockPos pPos, @NotNull Player pPlayer) {
 		BlockEntity blockentity = pLevel.getBlockEntity(pPos);
 		if (blockentity instanceof KilnBlockEntity) {
 			pPlayer.openMenu((MenuProvider)blockentity);
 		}
 	}
 
-	public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
+	public void animateTick(BlockState pState, @NotNull Level pLevel, @NotNull BlockPos pPos, @NotNull RandomSource pRandom) {
 		if (pState.getValue(LIT)) {
 			double d0 = (double)pPos.getX() + 0.5D;
 			double d1 = (double)pPos.getY();

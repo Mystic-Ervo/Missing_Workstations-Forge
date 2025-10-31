@@ -9,7 +9,7 @@ import net.ervo.missingworkstations.recipe.ModRecipes;
 import net.ervo.missingworkstations.screen.KilnScreen;
 import net.ervo.missingworkstations.screen.ModMenuTypes;
 import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -17,7 +17,6 @@ import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -30,6 +29,11 @@ public class MissingWorkstations {
 	public static final String MOD_ID = "missingworkstations";
 	// Directly reference a slf4j logger
 	private static final Logger LOGGER = LogUtils.getLogger();
+
+
+	public static final RecipeBookType KILN =
+			RecipeBookType.create("MISSINGWORKSTATIONS_KILNING");
+
 
 	public MissingWorkstations(FMLJavaModLoadingContext context) {
 		IEventBus modEventBus = context.getModEventBus();
